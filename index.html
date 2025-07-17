@@ -2,21 +2,25 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Telegram Web App</title>
+  <title>Колесо Фортуны</title>
+  <style>
+    body, html { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background: #111; }
+    #canvas { border: 5px solid #fff; border-radius: 50%; }
+    #spinBtn {
+      position: absolute; bottom: 20px;
+      padding: 10px 20px; font-size: 1.2rem;
+      background: gold; color: #111; border: none; border-radius: 5px;
+      cursor: pointer; box-shadow: 0 0 10px gold;
+    }
+  </style>
 </head>
 <body>
-  <h1>Привет из Web App!</h1>
-  <button id="closeBtn">Закрыть Web App</button>
+  <canvas id="canvas" width="500" height="500"></canvas>
+  <button id="spinBtn">Крутить!</button>
 
-  <script>
-    const tg = window.Telegram.WebApp;
-
-    document.getElementById('closeBtn').addEventListener('click', () => {
-      tg.close();
-    });
-
-    // Можно читать данные, переданные из бота
-    console.log('Data from bot:', tg.initData);
-  </script>
+  <!-- Winwheel.js и TweenMax (GSAP) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/javascript-winwheel@2.7.0/Winwheel.min.js"></script>
+  <script src="wheel.js"></script>
 </body>
 </html>
