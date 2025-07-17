@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Telegram Web App</title>
+</head>
+<body>
+  <h1>Привет из Web App!</h1>
+  <button id="closeBtn">Закрыть Web App</button>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+
+    document.getElementById('closeBtn').addEventListener('click', () => {
+      tg.close();
+    });
+
+    // Можно читать данные, переданные из бота
+    console.log('Data from bot:', tg.initData);
+  </script>
+</body>
+</html>
