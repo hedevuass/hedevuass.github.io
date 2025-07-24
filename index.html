@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Колесо Фортуны</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -90,12 +91,12 @@
     class="absolute inset-0 z-0 animate-gradient-soft bg-[length:150%_150%] bg-[radial-gradient(circle_at_30%_30%,rgba(255,0,150,0.12),transparent_70%),radial-gradient(circle_at_70%_70%,rgba(0,200,255,0.12),transparent_70%)] bg-blend-screen">
   </div>
   <canvas id="canvas" width="300" height="300"
-        class="rounded-full shadow-2xl border-8 border-white z-10"></canvas>
+    class="w-[80vw] max-w-xs h-auto rounded-full shadow-2xl border-4 border-white z-10"></canvas>
 
 
   <!-- Кнопка -->
-  <button id="spinBtn"
-    class="absolute bottom-10 left-1/2 -translate-x-1/2 px-6 py-3 text-xl bg-yellow-400 text-black font-semibold rounded-full shadow-lg hover:bg-yellow-500 transition-all duration-200 z-30">
+  <button id="spinBtn" class="absolute bottom-8 left-1/2 -translate-x-1/2 w-3/4 max-w-xs text-lg px-4 py-2
+         bg-yellow-400 text-black font-semibold rounded-full shadow-md hover:bg-yellow-500 transition-z-20">
     Крутить!
   </button>
 
