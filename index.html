@@ -23,14 +23,75 @@
       },
     };
   </script>
+  <style>
+    /* Флип‑карточка */
+    .flip-card {
+      perspective: 1000px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      transform: translate(-50%, -50%);
+      z-index: 50;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card.flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front,
+    .flip-back {
+      position: absolute;
+      backface-visibility: hidden;
+      width: 100%;
+      height: 100%;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .flip-front {
+      background: #333;
+      color: #aaa;
+    }
+
+    .flip-back {
+      background: #1e293b;
+      /* slate-800 */
+      color: #fff;
+      transform: rotateY(180deg);
+    }
+  </style>
 </head>
 
 <body class="relative h-screen w-screen overflow-hidden flex items-center justify-center bg-[#0a0a0a]">
   <!-- Стрелка -->
-  <div class="w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-t-[30px] border-t-red-500 absolute top-64 left-1/2 -translate-x-1/2 z-20"></div>
+  <div
+    class="w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-t-[30px] border-t-red-500 absolute"
+    style="top: calc(50% - 150px - 30px); left: 50%; transform: translateX(-50%); z-index:20;">
+  </div>
 
-  <div class="absolute inset-0 z-0 animate-gradient-soft bg-[length:150%_150%] bg-[radial-gradient(circle_at_30%_30%,rgba(255,0,150,0.12),transparent_70%),radial-gradient(circle_at_70%_70%,rgba(0,200,255,0.12),transparent_70%)] bg-blend-screen"></div>
-  <canvas id="canvas" width="500" height="500" class="rounded-full shadow-2xl border-8 border-white z-10"></canvas>
+  <!-- <div class="absolute inset-0 z-0 bg-bottom h-full bg-contain bg-no-repeat opacity-5 blur-sm"
+    style="background-image: url('background.jpg');"></div> -->
+
+  <div
+    class="absolute inset-0 z-0 animate-gradient-soft bg-[length:150%_150%] bg-[radial-gradient(circle_at_30%_30%,rgba(255,0,150,0.12),transparent_70%),radial-gradient(circle_at_70%_70%,rgba(0,200,255,0.12),transparent_70%)] bg-blend-screen">
+  </div>
+  <canvas id="canvas" width="300" height="300"
+        class="rounded-full shadow-2xl border-8 border-white z-10"></canvas>
+
 
   <!-- Кнопка -->
   <button id="spinBtn"
@@ -43,6 +104,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Winwheel.js/2.7.0/Winwheel.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/zarocknz/javascript-winwheel@master/Winwheel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script src="wheel.js"></script>
 </body>
 
